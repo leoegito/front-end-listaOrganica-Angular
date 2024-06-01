@@ -1,0 +1,40 @@
+<!-- <div class="container">
+    <h2>Minhas Listas de Compras</h2>
+    <div *ngFor="let list of shoppingLists" class="shopping-list-summary">
+      <h3>{{ list.title }}</h3>
+      <ul>
+        <li *ngFor="let product of list.products">
+          {{ product.name }} - {{ product.description }}
+          (Preço: {{ product.median }})
+        </li>
+      </ul>
+      <p>Total: {{ list.totalValue[1] }}</p>
+    </div>
+  </div> -->
+
+
+
+  <div class="container mt-5">
+    <h2 class="mb-4">Minhas Listas de Compras</h2>
+    <div class="row">
+      <div *ngFor="let list of shoppingLists" class="col-md-6 mb-4">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">{{ list.title }}</h3>
+          </div>
+          <div class="card-body">
+            <ul class="list-group">
+              <li *ngFor="let product of list.products" class="list-group-item">
+                <strong>{{ product.name }}</strong>: {{ product.description }} (Preço: {{ product.median }})
+              </li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <p class="mb-0">Total: {{ list.totalValue[1] }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
