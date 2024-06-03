@@ -35,11 +35,13 @@ import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { ShoppingListService } from './shopping-list.service';
 import { ProductListDetailsComponent } from './product-list-details/product-list-details.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    RegisterComponent,
     UserHomeComponent,
     ProductListDetailsComponent
   ],

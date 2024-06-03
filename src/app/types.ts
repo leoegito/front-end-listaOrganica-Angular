@@ -98,3 +98,21 @@ export interface Product {
     listItems: ListItem[];
   }
   
+  export interface MyUser {
+    id: number;
+    role: string;
+    username: string;
+    fullname: string;
+    email: string;
+    phone: string;
+    passwordHash?: string; // Opcional para não ser necessário no retorno
+    zipCode?: string;
+    city?: string;
+    state?: string;
+    district?: string;
+    street?: string;
+    creationTime?: string;
+    lastLogin?: string | null;
+    productLists?: any[]; // Altere conforme necessário
+  }
+  

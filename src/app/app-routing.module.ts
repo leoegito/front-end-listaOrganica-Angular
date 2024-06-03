@@ -21,9 +21,11 @@ import { LoginComponent } from './login/login.component';
 import { UserHomeComponent } from './user-home/user-home.component';
 import { ProductListDetailsComponent } from './product-list-details/product-list-details.component';
 import { AuthGuard } from './auth.guard';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user', component: UserHomeComponent, canActivate: [AuthGuard] },
   { path: 'product-list-details/:id', component: ProductListDetailsComponent, canActivate: [AuthGuard] }
