@@ -9,7 +9,6 @@ export class AuthGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    // const token = sessionStorage.getItem('token');
     if (typeof window !== 'undefined' && sessionStorage.getItem('token')) {
       return true;
     } else {

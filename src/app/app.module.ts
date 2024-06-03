@@ -34,12 +34,14 @@ import { UserHomeComponent } from './user-home/user-home.component';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 import { ShoppingListService } from './shopping-list.service';
+import { ProductListDetailsComponent } from './product-list-details/product-list-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    UserHomeComponent
+    UserHomeComponent,
+    ProductListDetailsComponent
   ],
   imports: [
     BrowserModule,

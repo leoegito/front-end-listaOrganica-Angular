@@ -1,0 +1,18 @@
+   .card {
+    min-height: 250px; /* Ajuste conforme necessário para garantir tamanho uniforme */
+  }
+  
+  .list-group-item {
+    min-height: 30px; /* Altura fixa para garantir uniformidade */
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-body .list-group {
+    flex-grow: 1;
+  }
+  

@@ -1,0 +1,174 @@
+<!-- <div class="container mt-5">
+    <h2 class="mb-4">{{ productList.title }}</h2>
+    <ul class="list-group">
+      <li *ngFor="let item of productList.listItems" class="list-group-item">
+        <strong>Produto:</strong> {{ item.id.product.name }}<br>
+        <strong>Descrição:</strong> {{ item.id.product.description }}<br>
+        <strong>Quantidade:</strong> {{ item.quantity }}<br>
+        <strong>Preço:</strong> {{ item.price }}<br>
+        <strong>Subtotal:</strong> {{ item.subTotal }}
+      </li>
+    </ul>
+    <div class="mt-4">
+      <h4>Total: {{ getTotal() }}</h4>
+    </div>
+  </div>
+   -->
+
+
+   <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>Quantity: {{ item.quantity }}</p>
+        <p>Price: {{ item.price | currency }}</p>
+        <p>Subtotal: {{ item.subTotal | currency }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency }}</h3>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div> -->
+  
+  <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantity: 
+          <button (click)="changeQuantity(item, -1)">-</button>
+          {{ item.quantity }}
+          <button (click)="changeQuantity(item, 1)">+</button>
+        </p>
+        <p>Price: {{ item.price | currency }}</p>
+        <p>Subtotal: {{ item.subTotal | currency }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency }}</h3>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
+   -->
+   <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantity: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0">-</button>
+          <button (click)="changeQuantity(item, 1)">+</button>
+        </p>
+        <p>Price: {{ item.price | currency }}</p>
+        <p>Subtotal: {{ item.subTotal | currency }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency }}</h3>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
+   -->
+
+   <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantity: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 1">-</button>
+          <button (click)="changeQuantity(item, 1)">+</button>
+        </p>
+        <p>Price: {{ item.price | currency }}</p>
+        <p>Subtotal: {{ item.subTotal | currency }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency }}</h3>
+    <button (click)="showSearchBox = true">Add Product</button>
+    <div *ngIf="showSearchBox">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product">
+      <ul class="list-group" *ngIf="searchResults.length">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+      </ul>
+      <button (click)="addProduct()" [disabled]="!selectedProduct">Add Selected Product</button>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div> -->
+
+  <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantity: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0">-</button>
+          <button (click)="changeQuantity(item, 1)">+</button>
+        </p>
+        <p>Price: {{ item.price | currency:'BRL' }}</p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency }}</h3>
+    <button (click)="showSearchBox = true">Add Product</button>
+    <div *ngIf="showSearchBox">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product">
+      <ul class="list-group" *ngIf="searchResults.length">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+      </ul>
+      <button (click)="addProduct()" [disabled]="!selectedProduct">Add Selected Product</button>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
+   -->
+
+   <div *ngIf="productList" class="container mt-4">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <div class="d-flex align-items-center">
+          <button class="btn btn-outline-danger btn-sm mr-2" (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0">-</button>
+          <p class="mb-0 mx-2">Qtd: {{ item.quantity }}</p>
+          <button class="btn btn-outline-success btn-sm ml-2" (click)="changeQuantity(item, 1)">+</button>
+        </div>
+        <p>Preço: {{ item.price | currency:'BRL' }}</p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency:'BRL' }}</h3>
+    <button class="btn btn-primary mt-3" (click)="showSearchBox = true">Novo Item</button>
+    <div *ngIf="showSearchBox" class="mt-3">
+      <input class="form-control mb-2" type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Busque por um produto">
+      <ul class="list-group" *ngIf="searchResults.length">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+      </ul>
+      <button class="btn btn-success mt-2" (click)="addProduct()" [disabled]="!selectedProduct">Adicionar à Lista</button>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
+  
+  

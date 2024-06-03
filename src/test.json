@@ -1,0 +1,73 @@
+[
+    {
+        "id": 1,
+        "title": "Compras do Mês",
+        "totalValue": [
+            3.2,
+            3.2
+        ],
+        "listItems": [
+            {
+                "id": {
+                    "productList": 1,
+                    "product": {
+                        "id": 1,
+                        "name": "Banana",
+                        "description": "Banana Organica",
+                        "globalMediumPrice": 0.0,
+                        "userPrice": 0.0,
+                        "median": 3.2,
+                        "maximumValue": 5.1,
+                        "minimumValue": 0.0
+                    }
+                },
+                "quantity": 1,
+                "price": 3.2,
+                "productList": 1,
+                "product": 1,
+                "subTotal": 3.2
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Feirinha do MST",
+        "totalValue": [
+            4.4,
+            4.4
+        ],
+        "listItems": [
+            {
+                "id": {
+                    "productList": 2,
+                    "product": 1
+                },
+                "quantity": 1,
+                "price": 3.2,
+                "productList": 2,
+                "product": 1,
+                "subTotal": 3.2
+            },
+            {
+                "id": {
+                    "productList": 2,
+                    "product": {
+                        "id": 2,
+                        "name": "Alface",
+                        "description": "Alface Hidropônica Orgânica",
+                        "globalMediumPrice": 0.0,
+                        "userPrice": 0.0,
+                        "median": 1.2,
+                        "maximumValue": 1.45,
+                        "minimumValue": 0.0
+                    }
+                },
+                "quantity": 1,
+                "price": 1.2,
+                "productList": 2,
+                "product": 2,
+                "subTotal": 1.2
+            }
+        ]
+    }
+]
