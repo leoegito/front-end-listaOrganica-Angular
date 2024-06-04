@@ -22,9 +22,6 @@ export class AppComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  // isAuthenticated(): boolean {
-  //   return this.authService.getUserId() !== null;
-  // }
 
   isAuthenticated(): boolean {
     return this.authService.getUserId() !== null;
@@ -34,4 +31,9 @@ export class AppComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  // isAdmin(): boolean {
+  //   return this.authService.getUserRole() === 'ADMIN';
+  // }
+
 }

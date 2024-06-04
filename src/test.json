@@ -1,73 +1,50 @@
-[
-    {
-        "id": 1,
-        "title": "Compras do Mês",
-        "totalValue": [
-            3.2,
-            3.2
-        ],
-        "listItems": [
-            {
-                "id": {
-                    "productList": 1,
-                    "product": {
-                        "id": 1,
-                        "name": "Banana",
-                        "description": "Banana Organica",
-                        "globalMediumPrice": 0.0,
-                        "userPrice": 0.0,
-                        "median": 3.2,
-                        "maximumValue": 5.1,
-                        "minimumValue": 0.0
-                    }
-                },
-                "quantity": 1,
-                "price": 3.2,
+{
+    "id": 1,
+    "title": "KKk",
+    "listItems": [
+        {
+            "id": {
                 "productList": 1,
-                "product": 1,
-                "subTotal": 3.2
-            }
-        ]
-    },
-    {
-        "id": 2,
-        "title": "Feirinha do MST",
-        "totalValue": [
-            4.4,
-            4.4
-        ],
-        "listItems": [
-            {
-                "id": {
-                    "productList": 2,
-                    "product": 1
-                },
-                "quantity": 1,
-                "price": 3.2,
-                "productList": 2,
-                "product": 1,
-                "subTotal": 3.2
+                "product": {
+                    "id": 1,
+                    "name": "Maçã 1",
+                    "description": "Maçã Orgânica",
+                    "globalMediumPrice": 0.0,
+                    "userPrice": 2.1,
+                    "median": 2.69,
+                    "maximumValue": 119.86,
+                    "minimumValue": 2.1
+                }
             },
-            {
-                "id": {
-                    "productList": 2,
-                    "product": {
-                        "id": 2,
-                        "name": "Alface",
-                        "description": "Alface Hidropônica Orgânica",
-                        "globalMediumPrice": 0.0,
-                        "userPrice": 0.0,
-                        "median": 1.2,
-                        "maximumValue": 1.45,
-                        "minimumValue": 0.0
-                    }
-                },
-                "quantity": 1,
-                "price": 1.2,
-                "productList": 2,
-                "product": 2,
-                "subTotal": 1.2
-            }
-        ]
-    }
-]
+            "quantity": 1,
+            "price": 2.1,
+            "productList": 1,
+            "product": 1,
+            "subTotal": 2.1
+        },
+        {
+            "id": {
+                "productList": 1,
+                "product": {
+                    "id": 2,
+                    "name": "Maçã 2",
+                    "description": "Maçã Orgânica",
+                    "globalMediumPrice": 0.0,
+                    "userPrice": 0.0,
+                    "median": 6.425000000000001,
+                    "maximumValue": 12.99,
+                    "minimumValue": 0.0
+                }
+            },
+            "quantity": 1,
+            "price": 5.8,
+            "productList": 1,
+            "product": 2,
+            "subTotal": 5.8
+        }
+    ],
+    "totalValue": [
+        7.9,
+        9.115
+    ]
+}

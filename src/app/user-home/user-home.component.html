@@ -185,7 +185,7 @@
   </div>
 </div> -->
 
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let list of shoppingLists">
       <div class="card h-100">
@@ -200,6 +200,161 @@
             </li>
             <li class="list-group-item" *ngFor="let item of list.listItems.slice(0, 3); let i = index">
               {{ item.id.product.name }}
+            </li>
+            <li class="list-group-item" *ngIf="list.listItems.length > 3">
+              ...
+            </li>
+            <ng-container *ngIf="list.listItems.length < 3 && list.listItems.length > 0">
+              <li class="list-group-item" *ngFor="let _ of [].constructor(3 - list.listItems.length); let j = index">
+                &nbsp;
+              </li>
+            </ng-container>
+          </ul>
+          <div class="mt-auto">
+            <ng-container *ngIf="list.listItems.length > 0">
+              <p class="text-muted">Total: {{ getTotalValue(list) | currency:'BRL' }}</p>
+            </ng-container>
+            <button class="btn btn-primary w-100" (click)="viewDetails(list.id)">Ver Lista</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary btn-lg" (click)="toggleNewListForm()">Criar Nova Lista</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showNewListForm" class="mt-4">
+    <input class="form-control mb-2" type="text" [(ngModel)]="newListTitle" placeholder="Nome da Nova Lista">
+    <button class="btn btn-success" (click)="createShoppingList()">Criar</button>
+  </div>
+</div> -->
+
+<!-- <div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let list of shoppingLists">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title d-flex justify-content-between align-items-center">
+            {{ list.title }}
+            <button class="btn btn-danger btn-sm" (click)="deleteShoppingList(list.id)">Delete</button>
+          </h5>
+          <ul class="list-group list-group-flush flex-grow-1">
+            <li class="list-group-item" *ngIf="list.listItems.length === 0">
+              <p class="text-muted text-center">Ainda não há produtos - Clique em "Ver Lista" para começar!</p>
+            </li>
+            <li class="list-group-item" *ngFor="let item of list.listItems.slice(0, 3); let i = index">
+              <span *ngIf="item.id.product.name; else loadingProduct">
+                {{ item.id.product.name }}
+              </span>
+              <ng-template #loadingProduct>
+                <span>Carregando produto...</span>
+              </ng-template>
+            </li>
+            <li class="list-group-item" *ngIf="list.listItems.length > 3">
+              ...
+            </li>
+            <ng-container *ngIf="list.listItems.length < 3 && list.listItems.length > 0">
+              <li class="list-group-item" *ngFor="let _ of [].constructor(3 - list.listItems.length); let j = index">
+                &nbsp;
+              </li>
+            </ng-container>
+          </ul>
+          <div class="mt-auto">
+            <ng-container *ngIf="list.listItems.length > 0">
+              <p class="text-muted">Total: {{ getTotalValue(list) | currency:'BRL' }}</p>
+            </ng-container>
+            <button class="btn btn-primary w-100" (click)="viewDetails(list.id)">Ver Lista</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary btn-lg" (click)="toggleNewListForm()">Criar Nova Lista</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showNewListForm" class="mt-4">
+    <input class="form-control mb-2" type="text" [(ngModel)]="newListTitle" placeholder="Nome da Nova Lista">
+    <button class="btn btn-success" (click)="createShoppingList()">Criar</button>
+  </div>
+</div> -->
+
+<!-- <div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let list of shoppingLists">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title d-flex justify-content-between align-items-center">
+            {{ list.title }}
+            <button class="btn btn-danger btn-sm" (click)="deleteShoppingList(list.id)">Delete</button>
+          </h5>
+          <ul class="list-group list-group-flush flex-grow-1">
+            <li class="list-group-item" *ngIf="list.listItems.length === 0">
+              <p class="text-muted text-center">Ainda não há produtos - Clique em "Ver Lista" para começar!</p>
+            </li>
+            <li class="list-group-item" *ngFor="let item of list.listItems.slice(0, 3); let i = index">
+              <span *ngIf="item.id.product.name; else loadingProduct">
+                {{ item.id.product.name }}
+              </span>
+              <ng-template #loadingProduct>
+                <span *ngIf="!loadingProducts.has(item.id.product.id)">Nome não disponível</span>
+                <span *ngIf="loadingProducts.has(item.id.product.id)">Carregando produto...</span>
+              </ng-template>
+            </li>
+            <li class="list-group-item" *ngIf="list.listItems.length > 3">
+              ...
+            </li>
+            <ng-container *ngIf="list.listItems.length < 3 && list.listItems.length > 0">
+              <li class="list-group-item" *ngFor="let _ of [].constructor(3 - list.listItems.length); let j = index">
+                &nbsp;
+              </li>
+            </ng-container>
+          </ul>
+          <div class="mt-auto">
+            <ng-container *ngIf="list.listItems.length > 0">
+              <p class="text-muted">Total: {{ getTotalValue(list) | currency:'BRL' }}</p>
+            </ng-container>
+            <button class="btn btn-primary w-100" (click)="viewDetails(list.id)">Ver Lista</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 d-flex justify-content-center align-items-center">
+        <button class="btn btn-primary btn-lg" (click)="toggleNewListForm()">Criar Nova Lista</button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showNewListForm" class="mt-4">
+    <input class="form-control mb-2" type="text" [(ngModel)]="newListTitle" placeholder="Nome da Nova Lista">
+    <button class="btn btn-success" (click)="createShoppingList()">Criar</button>
+  </div>
+</div> -->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let list of shoppingLists">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title d-flex justify-content-between align-items-center">
+            {{ list.title }}
+            <button class="btn btn-danger btn-sm" (click)="deleteShoppingList(list.id)">Delete</button>
+          </h5>
+          <ul class="list-group list-group-flush flex-grow-1">
+            <li class="list-group-item" *ngIf="list.listItems.length === 0">
+              <p class="text-muted text-center">Ainda não há produtos - Clique em "Ver Lista" para começar!</p>
+            </li>
+            <li class="list-group-item" *ngFor="let item of list.listItems.slice(0, 3); let i = index">
+              <span *ngIf="item.id.product.name; else loadingProduct">
+                {{ item.id.product.name }}
+              </span>
+              <ng-template #loadingProduct>
+                <span *ngIf="!loadingProducts.has(item.id.product.id)">Nome não disponível</span>
+                <span *ngIf="loadingProducts.has(item.id.product.id)">Carregando produto...</span>
+              </ng-template>
             </li>
             <li class="list-group-item" *ngIf="list.listItems.length > 3">
               ...

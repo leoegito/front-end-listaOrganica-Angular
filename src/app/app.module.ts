@@ -36,6 +36,8 @@ import { AuthGuard } from './auth.guard';
 import { ShoppingListService } from './shopping-list.service';
 import { ProductListDetailsComponent } from './product-list-details/product-list-details.component';
 import { RegisterComponent } from './register/register.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminService } from './admin/admin.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { RegisterComponent } from './register/register.component';
     LoginComponent,
     RegisterComponent,
     UserHomeComponent,
-    ProductListDetailsComponent
+    ProductListDetailsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, ShoppingListService],
+  providers: [AuthService, AuthGuard, ShoppingListService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

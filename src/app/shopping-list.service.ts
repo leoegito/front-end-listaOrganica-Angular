@@ -93,11 +93,10 @@
 //   }
 // }
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { ProductList } from 'src/app/types';
-// import { types } from 'util';
-import { ListItem, Product, ProductList } from './types';
+import { map } from 'rxjs/operators'; // Adicione esta linha
+import { ListItem, Product, ProductList, Price } from './types';
 
 @Injectable({
   providedIn: 'root'
@@ -169,6 +168,25 @@ export class ShoppingListService {
     return this.http.post<ProductList>(`http://localhost:8080/shoppingList/${listId}/add-product`, product, { headers });
   }
 
+  updateProductPrice(productId: number, price: Price): Observable<HttpResponse<any>> {
+    const headers = this.getAuthHeaders();
+    return this.http.post<HttpResponse<any>>(`http://localhost:8080/price/product/${productId}`, price, { headers, observe: 'response' });
+  }
+
+  registerNewProduct(product: Product): Observable<string> {
+    const headers = this.getAuthHeaders();
+    return this.http.post(`http://localhost:8080/product`, product, {
+      headers,
+      observe: 'response'
+    }).pipe(
+      map((response: HttpResponse<any>) => response.headers.get('Location') || '')
+    );
+  }
+
+  getProduct(productId: number): Observable<Product> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<Product>(`http://localhost:8080/product/${productId}`, { headers });
+  }
 
 }
 

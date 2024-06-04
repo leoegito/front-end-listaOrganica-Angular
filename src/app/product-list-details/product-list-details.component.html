@@ -140,7 +140,7 @@
   </div>
    -->
 
-   <div *ngIf="productList" class="container mt-4">
+   <!-- <div *ngIf="productList" class="container mt-4">
     <h1>{{ productList.title }}</h1>
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let item of productList.listItems">
@@ -169,6 +169,315 @@
   </div>
   <div *ngIf="!productList">
     <p>Loading...</p>
-  </div>
+  </div> -->
   
+  <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantity: {{ item.quantity }}
+          <button class="btn btn-outline-secondary btn-sm ms-2" (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0">-</button>
+          <button class="btn btn-outline-secondary btn-sm ms-1" (click)="changeQuantity(item, 1)">+</button>
+        </p>
+        <p>
+          Price: 
+          <span *ngIf="!item.editingPrice">{{ item.price | currency:'BRL' }} <button class="btn btn-outline-primary btn-sm ms-2" (click)="editPrice(item)">Alterar</button></span>
+          <input *ngIf="item.editingPrice" type="text" [(ngModel)]="item.newPrice" (keyup.enter)="updatePrice(item)" (keyup.esc)="cancelEditPrice(item)">
+        </p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency:'BRL' }}</h3>
+    <button class="btn btn-primary" (click)="showSearchBox = true">Add Product</button>
+    <div *ngIf="showSearchBox">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product">
+      <ul class="list-group" *ngIf="searchResults.length">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+      </ul>
+      <button class="btn btn-primary mt-2" (click)="addProduct()" [disabled]="!selectedProduct">Add Selected Product</button>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
+   -->
+
+   <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantity: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0" class="btn btn-sm btn-secondary ms-2">-</button>
+          <button (click)="changeQuantity(item, 1)" class="btn btn-sm btn-secondary ms-2">+</button>
+        </p>
+        <p>
+          Price: 
+          <span *ngIf="!item.editingPrice">{{ item.price | currency:'BRL' }}</span>
+          <input *ngIf="item.editingPrice" [(ngModel)]="item.newPrice" (keydown.enter)="updatePrice(item)" (keydown.esc)="cancelEditPrice(item)" type="number" class="form-control d-inline-block w-auto">
+          <button *ngIf="!item.editingPrice" (click)="editPrice(item)" class="btn btn-sm btn-primary ms-2">Edit</button>
+        </p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency:'BRL' }}</h3>
+    <button (click)="showSearchBox = true" class="btn btn-primary mt-2">Add Product</button>
+    <div *ngIf="showSearchBox" class="mt-3">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product" class="form-control mb-2">
+      <ul class="list-group" *ngIf="searchResults.length">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+      </ul>
+      <button (click)="addProduct()" [disabled]="!selectedProduct" class="btn btn-success mt-2">Add Selected Product</button>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
+   -->
+
+   <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantity: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0" class="btn btn-sm btn-secondary ms-2">-</button>
+          <button (click)="changeQuantity(item, 1)" class="btn btn-sm btn-secondary ms-2">+</button>
+        </p>
+        <p>
+          Price: 
+          <span *ngIf="!item.editingPrice">
+            {{ item.price | currency:'BRL' }}
+            <span *ngIf="item.id.product.userPrice > 0">
+              / {{ item.id.product.userPrice | currency:'BRL' }}
+            </span>
+          </span>
+          <input *ngIf="item.editingPrice" [(ngModel)]="item.newPrice" (keydown.enter)="updatePrice(item)" (keydown.esc)="cancelEditPrice(item)" type="number" class="form-control d-inline-block w-auto">
+          <button *ngIf="!item.editingPrice" (click)="editPrice(item)" class="btn btn-sm btn-primary ms-2">Edit</button>
+        </p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency:'BRL' }}</h3>
+    <button (click)="showSearchBox = true" class="btn btn-primary mt-2">Add Product</button>
+    <div *ngIf="showSearchBox" class="mt-3">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product" class="form-control mb-2">
+      <ul class="list-group" *ngIf="searchResults.length">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+      </ul>
+      <button (click)="addProduct()" [disabled]="!selectedProduct" class="btn btn-success mt-2">Add Selected Product</button>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div> -->
+  
+  <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantidade: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0" class="btn btn-sm btn-secondary ms-2">-</button>
+          <button (click)="changeQuantity(item, 1)" class="btn btn-sm btn-secondary ms-2">+</button>
+        </p>
+        <p>
+          Preço Dinâmico: 
+          <span *ngIf="!item.editingPrice">
+            <span class="badge bg-primary">{{ item.price | currency:'BRL' }}</span>
+            Preço Usuário: 
+            <span *ngIf="item.id.product.userPrice > 0" class="ms-2 badge bg-success">
+              {{ item.id.product.userPrice | currency:'BRL' }}
+            </span>
+          </span>
+          <input *ngIf="item.editingPrice" [(ngModel)]="item.newPrice" (keydown.enter)="updatePrice(item)" (keydown.esc)="cancelEditPrice(item)" type="number" class="form-control d-inline-block w-auto">
+          <button *ngIf="!item.editingPrice" (click)="editPrice(item)" class="btn btn-sm btn-primary ms-2">Editar</button>
+        </p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency:'BRL' }}</h3>
+    <button (click)="showSearchBox = true" class="btn btn-primary mt-2">Adicionar à Lista</button>
+    <div *ngIf="showSearchBox" class="mt-3">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product" class="form-control mb-2">
+      <ul class="list-group" *ngIf="searchResults.length">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+        <li class="list-group-item" (click)="showNewProductForm = true">
+          + Cadastrar Produto
+        </li>
+      </ul>
+      <button (click)="addProduct()" [disabled]="!selectedProduct" class="btn btn-success mt-2">Add Selected Product</button>
+    </div>
+    <div *ngIf="showNewProductForm">
+      <h3>Cadastrar Novo Produto</h3>
+      <form (ngSubmit)="registerNewProduct()">
+        <div class="mb-3">
+          <label for="productName" class="form-label">Nome</label>
+          <input type="text" id="productName" class="form-control" [(ngModel)]="newProductName" name="productName" required>
+        </div>
+        <div class="mb-3">
+          <label for="productDescription" class="form-label">Descrição</label>
+          <input type="text" id="productDescription" class="form-control" [(ngModel)]="newProductDescription" name="productDescription" required>
+        </div>
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">Preço</label>
+          <input type="number" step="0.01" id="productPrice" class="form-control" [(ngModel)]="newProductPrice" name="productPrice">
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelNewProductForm()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div> -->
+
+
+  <!-- <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantidade: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0" class="btn btn-sm btn-secondary ms-2">-</button>
+          <button (click)="changeQuantity(item, 1)" class="btn btn-sm btn-secondary ms-2">+</button>
+        </p>
+        <p>
+          Preço Dinâmico: 
+          <span *ngIf="!item.editingPrice">
+            <span class="badge bg-primary">{{ item.price | currency:'BRL' }}</span>
+            Preço Usuário: 
+            <span *ngIf="item.id.product.userPrice > 0" class="ms-2 badge bg-success">
+              {{ item.id.product.userPrice | currency:'BRL' }}
+            </span>
+          </span>
+          <input *ngIf="item.editingPrice" [(ngModel)]="item.newPrice" (keydown.enter)="updatePrice(item)" (keydown.esc)="cancelEditPrice(item)" type="number" class="form-control d-inline-block w-auto">
+          <button *ngIf="!item.editingPrice" (click)="editPrice(item)" class="btn btn-sm btn-primary ms-2">Editar</button>
+        </p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency:'BRL' }}</h3>
+    <button (click)="showSearchBox = true" class="btn btn-primary mt-2">Adicionar à Lista</button>
+    <div *ngIf="showSearchBox" class="mt-3">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product" class="form-control mb-2">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+          {{ product.name }}
+        </li>
+        <li class="list-group-item text-primary" (click)="showNewProductForm = true">
+          + Cadastrar Novo Produto
+        </li>
+      </ul>
+      <button (click)="addProduct()" [disabled]="!selectedProduct" class="btn btn-success mt-2">Add Selected Product</button>
+    </div>
+    <div *ngIf="showNewProductForm">
+      <h3>Cadastrar Novo Produto</h3>
+      <form (ngSubmit)="registerNewProduct()">
+        <div class="mb-3">
+          <label for="productName" class="form-label">Nome</label>
+          <input type="text" id="productName" class="form-control" [(ngModel)]="newProductName" name="productName" required>
+        </div>
+        <div class="mb-3">
+          <label for="productDescription" class="form-label">Descrição</label>
+          <input type="text" id="productDescription" class="form-control" [(ngModel)]="newProductDescription" name="productDescription" required>
+        </div>
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">Preço</label>
+          <input type="number" step="0.01" id="productPrice" class="form-control" [(ngModel)]="newProductPrice" name="productPrice">
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelNewProductForm()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
+   -->
+
+   <div *ngIf="productList">
+    <h1>{{ productList.title }}</h1>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of productList.listItems">
+        <h5>{{ item.id.product.name }}</h5>
+        <p>{{ item.id.product.description }}</p>
+        <p>
+          Quantidade: {{ item.quantity }}
+          <button (click)="changeQuantity(item, -1)" [disabled]="item.quantity <= 0" class="btn btn-sm btn-secondary ms-2">-</button>
+          <button (click)="changeQuantity(item, 1)" class="btn btn-sm btn-secondary ms-2">+</button>
+        </p>
+        <p>
+          Preço Dinâmico: 
+          <span *ngIf="!item.editingPrice">
+            <span class="badge bg-primary">{{ item.price | currency:'BRL' }}</span>
+            Preço Usuário: 
+            <span *ngIf="item.id.product.userPrice > 0" class="ms-2 badge bg-success">
+              {{ item.id.product.userPrice | currency:'BRL' }}
+            </span>
+          </span>
+          <input *ngIf="item.editingPrice" [(ngModel)]="item.newPrice" (keydown.enter)="updatePrice(item)" (keydown.esc)="cancelEditPrice(item)" type="number" class="form-control d-inline-block w-auto">
+          <button *ngIf="!item.editingPrice" (click)="editPrice(item)" class="btn btn-sm btn-primary ms-2">Editar</button>
+        </p>
+        <p>Subtotal: {{ item.subTotal | currency:'BRL' }}</p>
+      </li>
+    </ul>
+    <h3 class="mt-4">Total: {{ getTotal() | currency:'BRL' }}</h3>
+    <button (click)="showSearchBox = true" class="btn btn-primary mt-2">Adicionar à Lista</button>
+    <div *ngIf="showSearchBox" class="mt-3">
+      <input type="text" [(ngModel)]="searchQuery" (input)="searchProducts()" placeholder="Search for a product" class="form-control mb-2">
+      <ul class="list-group">
+        <ng-container *ngIf="searchQuery.trim() !== ''">
+          <li class="list-group-item" *ngFor="let product of searchResults" (click)="selectProduct(product)">
+            {{ product.name }}
+          </li>
+          <li class="list-group-item text-primary" (click)="showNewProductForm = true">
+            + Cadastrar Novo Produto
+          </li>
+        </ng-container>
+      </ul>
+      <button (click)="addProduct()" [disabled]="!selectedProduct" class="btn btn-success mt-2">Add Selected Product</button>
+    </div>
+    <div *ngIf="showNewProductForm">
+      <h3>Cadastrar Novo Produto</h3>
+      <form (ngSubmit)="registerNewProduct()">
+        <div class="mb-3">
+          <label for="productName" class="form-label">Nome</label>
+          <input type="text" id="productName" class="form-control" [(ngModel)]="newProductName" name="productName" required>
+        </div>
+        <div class="mb-3">
+          <label for="productDescription" class="form-label">Descrição</label>
+          <input type="text" id="productDescription" class="form-control" [(ngModel)]="newProductDescription" name="productDescription" required>
+        </div>
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">Preço</label>
+          <input type="number" step="0.01" id="productPrice" class="form-control" [(ngModel)]="newProductPrice" name="productPrice">
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelNewProductForm()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="!productList">
+    <p>Loading...</p>
+  </div>
   

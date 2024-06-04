@@ -89,6 +89,8 @@ export interface Product {
     productList: number;
     product: number;
     subTotal: number;
+    editingPrice?: boolean;
+    newPrice?: number | null;
   }
   
   export interface ProductList {
@@ -116,3 +118,6 @@ export interface Product {
     productLists?: any[]; // Altere conforme necessário
   }
   
+  export interface Price {
+    priceValue: number;
+  }
