@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MyUser } from '../types';
+import { MyUser, Product } from '../types';
 import { AdminService } from './admin.service';
 
 @Component({
@@ -9,7 +9,10 @@ import { AdminService } from './admin.service';
 })
 export class AdminComponent implements OnInit {
   users: MyUser[] = [];
+  products: Product[] = [];
   editingUser: MyUser | null = null;
+  showUserList: boolean = true;
+  showProductList: boolean = false;
 
   constructor(private adminService: AdminService) {}
 
@@ -21,6 +24,22 @@ export class AdminComponent implements OnInit {
     this.adminService.getUsers().subscribe(users => {
       this.users = users;
     });
+  }
+
+  loadProducts(): void {
+    this.adminService.getAllProducts().subscribe((data: Product[]) => {
+      this.products = data;
+    });
+  }
+
+  showUsers(): void {
+    this.showUserList = true;
+    this.showProductList = false;
+  }
+
+  showProducts(): void {
+    this.showUserList = false;
+    this.showProductList = true;
   }
 
   editUser(user: MyUser): void {

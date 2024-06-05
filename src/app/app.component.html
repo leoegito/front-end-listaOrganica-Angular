@@ -195,11 +195,11 @@
   <router-outlet></router-outlet>
 </div> -->
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #228B22;">
+<!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #228B22;">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="path-to-your-icon.png" alt="App Icon" class="rounded-circle" width="30" height="30">
-      Minha Aplicação
+      Lista Orgânica
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -229,5 +229,149 @@
 </script>
 <div class="container mt-4">
   <router-outlet></router-outlet>
+</div> -->
+  
+<!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #228B22;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/organicIcon.jpg" class="rounded-circle" width="30" height="30">
+      Lista Orgânica
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/user']">Home</a>
+        </li>
+        <span class="nav-separator">|</span>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+        </li>
+        <span class="nav-separator">|</span>
+        <li class="nav-item" *ngIf="isAuthenticated()">
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated()">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('Bootstrap JavaScript is working');
+  });
+</script>
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div> -->
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #228B22;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/organicIcon.jpg" alt="App Icon" class="rounded-circle" width="30" height="30">
+      Lista Orgânica
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/user']">Principal</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated() && hasRole('ADMIN')">
+          <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated() && hasRole('SELLER')">
+          <a class="nav-link" [routerLink]="['/seller-home']">Vendedor</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated()">
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated()">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div> -->
+
+<!-- <nav class="navbar navbar-expand-lg" style="background-image: url('/assets/images/navbar-fundo.png'); background-size: cover;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/organicIcon.jpg" alt="App Icon" class="rounded-circle" width="80" height="80">
+      Lista Orgânica
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/user']">Principal</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated() && hasRole('ADMIN')">
+          <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated() && hasRole('SELLER')">
+          <a class="nav-link" [routerLink]="['/seller-home']">Vendedor</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated()">
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated()">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg" style="background-image: url('/assets/images/navbar-fundo.png'); background-size: cover;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/organicIcon.jpg" alt="App Icon" class="rounded-circle icon-with-shadow" width="80" height="80">
+      <span class="brand-text">Lista Orgânica</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/about']">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/user']">Principal</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated() && hasRole('ADMIN')">
+          <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated() && hasRole('SELLER')">
+          <a class="nav-link" [routerLink]="['/seller-home']">Vendedor</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated()">
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAuthenticated()">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+<router-outlet></router-outlet>
+
+<div class="background-section">
+  <img src="assets/images/ecologiconatural.png" alt="Ecológico e Natural" class="background-section-image">
+</div>
 </div>
 

@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/font-awesome/css/font-awesome.min.css';
+body {
+    font-family: "Century Gothic", sans-serif;
+  }
+  
+  .container {
+    margin-top: 50px;
+  }
+  
+  .background-image {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    z-index: -1; /* Para que a imagem fique atrás do conteúdo */
+  }
+  
+  .background-image img {
+    width: 40%; /* Ajuste o tamanho conforme necessário */
+    height: auto;
+  }
+
+  .background-section {
+    position: absolute;
+    bottom: 1%;
+    right: 2.5%;
+    margin: 20px;
+    z-index: -1; /* Para garantir que a imagem fique atrás dos outros conteúdos */
+  }
+  
+  .background-section-image {
+    max-width: 200px; /* Ajuste o tamanho conforme necessário */
+    max-height: 200px;
+    min-width: 20px;
+    min-height: 20px;
+  }

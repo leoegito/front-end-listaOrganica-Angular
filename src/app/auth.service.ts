@@ -141,17 +141,39 @@ export class AuthService {
     return this.http.post<MyUser>(`${this.apiURL}/login`, { username, passwordHash: password }, { headers });
   }
 
+  // handleLogin(username: string, password: string) {
+  //   this.login(username, password).subscribe({
+  //     next: (user) => {
+  //       if (this.isSessionStorageAvailable()) {
+  //         sessionStorage.setItem('userID', user.id.toString());
+  //         sessionStorage.setItem('userRole', user.role);
+  //       }
+  //       this.router.navigate(['/user']);
+  //     },
+  //     error: (err) => console.error('Authentication failed', err)
+  //   });
+  // }
   handleLogin(username: string, password: string) {
     this.login(username, password).subscribe({
       next: (user) => {
-        if (this.isSessionStorageAvailable()) {
-          sessionStorage.setItem('userID', user.id.toString());
-          sessionStorage.setItem('userRole', user.role);
+        sessionStorage.setItem('token', btoa(`${username}:${password}`));
+        sessionStorage.setItem('userID', user.id.toString());
+        sessionStorage.setItem('userRole', user.role);
+
+        if (user.role.includes('ADMIN')) {
+          this.router.navigate(['/admin']);
+        } else if (user.role.includes('SELLER')) {
+          this.router.navigate(['/seller-home']);
+        } else if (user.role === 'USER') {
+          this.router.navigate(['/user']);
         }
-        this.router.navigate(['/user']);
       },
       error: (err) => console.error('Authentication failed', err)
     });
+  }
+
+  isAuthenticated(): boolean {
+    return !!sessionStorage.getItem('token');
   }
 
   getUserId(): number | null {

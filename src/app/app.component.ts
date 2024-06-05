@@ -32,6 +32,11 @@ export class AppComponent {
     this.router.navigate(['/login']);
   }
 
+  hasRole(role: string): boolean {
+    const userRole = this.authService.getUserRole();
+    return userRole ? userRole.includes(role) : false;
+  }
+
   // isAdmin(): boolean {
   //   return this.authService.getUserRole() === 'ADMIN';
   // }

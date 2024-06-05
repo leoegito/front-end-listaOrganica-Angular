@@ -1,0 +1,53 @@
+/* Estilos para o formulário de registro */
+.register-card {
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: none;
+  }
+  
+  .register-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .register-card .form-label {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .register-card .form-control {
+    border-radius: 5px;
+  }
+  
+  .register-card .btn-primary {
+    background-color: #228B22;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .register-card .btn-primary:hover {
+    background-color: #1e7a1e;
+  }
+
+  .register-card {
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* .form-label:after {
+    content: ' *';
+    color: red;
+  } */
+  
+  input.ng-invalid.ng-touched {
+    border-color: red;
+  }
+  
+  input.ng-valid.ng-touched {
+    border-color: green;
+  }
+  
+  
+  

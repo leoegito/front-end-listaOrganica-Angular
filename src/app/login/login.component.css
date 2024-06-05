@@ -1,0 +1,57 @@
+.container {
+    margin-top: 0px; /* Ajuste a margem superior conforme necessário */
+    display: flex;
+    justify-content: center;
+    background-color: #f8f9fa;
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  .card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #343a40;
+  }
+  
+  .form-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #343a40;
+  }
+  
+  .btn {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+  }
+  
+  .input-group-text {
+    background-color: #ffffff;
+    border: none;
+  }
+  
+  .input-group {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+  
+  .input-group input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .input-group input:focus {
+    border: none;
+    box-shadow: none;
+  }
+  

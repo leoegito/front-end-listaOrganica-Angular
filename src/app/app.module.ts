@@ -38,6 +38,11 @@ import { ProductListDetailsComponent } from './product-list-details/product-list
 import { RegisterComponent } from './register/register.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminService } from './admin/admin.service';
+import { AdminProductComponent } from './admin-product/admin-product.component';
+import { SellerHomeComponent } from './seller-home/seller-home.component';
+import { SellerService } from './seller-home/seller.service';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,10 @@ import { AdminService } from './admin/admin.service';
     RegisterComponent,
     UserHomeComponent,
     ProductListDetailsComponent,
-    AdminComponent
+    AdminComponent,
+    AdminProductComponent,
+    SellerHomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,7 @@ import { AdminService } from './admin/admin.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard, ShoppingListService, AdminService],
+  providers: [AuthService, AuthGuard, ShoppingListService, AdminService, SellerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,18 @@
+.container {
+    text-align: center;
+  }
+  
+  .github-link {
+    font-size: 1.2rem;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .github-link:hover {
+    color: #000;
+  }
+  
+  .github-link .fa-github {
+    margin-right: 5px;
+  }
+  

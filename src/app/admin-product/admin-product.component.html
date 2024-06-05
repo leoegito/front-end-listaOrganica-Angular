@@ -1,0 +1,63 @@
+<!-- <div class="container mt-4">
+    <h2>Lista de Produtos</h2>
+    <div *ngFor="let product of products">
+      <p>
+        {{ product.name }} - {{ product.description }} - R$ {{ product.userPrice }} - Mediano: R$ {{ product.median }}
+        <button (click)="editProduct(product)" class="btn btn-warning btn-sm">Editar</button>
+        <button (click)="editProductPrice(product)" class="btn btn-info btn-sm">Editar Preço</button>
+        <button (click)="deleteProduct(product.id)" class="btn btn-danger btn-sm">Excluir</button>
+      </p>
+    </div>
+  </div>
+   -->
+
+
+   <div class="container mt-4">
+    <h1>Admin Console - Produtos</h1>
+    <div class="btn-group mb-3" role="group">
+      <button type="button" class="btn btn-secondary mx-2" [routerLink]="['/admin']">Usuários</button>
+      <button type="button" class="btn btn-primary mx-2">Produtos</button>
+    </div>
+    
+    <div *ngIf="!editingProduct">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let product of products">
+          <span>{{ product.name }} - {{ product.description }} - {{ product.userPrice | currency:'BRL' }}</span>
+          <span>
+            <button class="btn btn-sm btn-primary me-2" (click)="editProduct(product)">Editar</button>
+            <button class="btn btn-sm btn-secondary me-2" (click)="editProductPrice(product)">Editar Preço</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteProduct(product.id)">Excluir</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+  
+    <div *ngIf="editingProduct">
+      <h3>Editar Produto</h3>
+      <form (ngSubmit)="saveProduct()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nome</label>
+          <input type="text" id="name" class="form-control" [(ngModel)]="editingProduct.name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Descrição</label>
+          <input type="text" id="description" class="form-control" [(ngModel)]="editingProduct.description" name="description" required>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancelar</button>
+      </form>
+    </div>
+  
+    <div *ngIf="editingProductPrice">
+      <h3>Editar Preço do Produto</h3>
+      <form (ngSubmit)="saveProductPrice()">
+        <div class="mb-3">
+          <label for="price" class="form-label">Preço</label>
+          <input type="number" step="0.01" id="price" class="form-control" [(ngModel)]="newProductPrice" name="price" required>
+        </div>
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEditPrice()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+  
