@@ -23,10 +23,6 @@ export class AdminService {
     return this.http.get<MyUser[]>(`${this.apiURL}/users`, { headers });
   }
 
-  // updateUser(user: MyUser): Observable<MyUser> {
-  //   const headers = this.getAuthHeaders();
-  //   return this.http.put<MyUser>(`${this.apiURL}/users/${user.id}`, user, { headers });
-  // }
   updateUser(user: MyUser): Observable<MyUser> {
     const headers = this.getAuthHeaders();
     const userData = { 

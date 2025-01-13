@@ -1,51 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { Product } from '../types';
-// import { AdminService } from '../admin/admin.service';
-
-// @Component({
-//   selector: 'app-admin-product',
-//   templateUrl: './admin-product.component.html',
-//   styleUrls: ['./admin-product.component.css']
-// })
-// export class AdminProductComponent implements OnInit {
-//   products: Product[] = [];
-
-//   constructor(private adminService: AdminService) {}
-
-//   ngOnInit(): void {
-//     this.loadProducts();
-//   }
-
-//   loadProducts(): void {
-//     this.adminService.getAllProducts().subscribe((data: Product[]) => {
-//       this.products = data;
-//     });
-//   }
-
-//   editProduct(product: Product): void {
-//     const updatedProduct = { name: product.name, description: product.description };
-//     this.adminService.updateProduct(product.id, updatedProduct).subscribe((data: Product) => {
-//       product.name = data.name;
-//       product.description = data.description;
-//     });
-//   }
-
-//   editProductPrice(product: Product): void {
-//     const newPrice = prompt('Digite o novo preço:', product.userPrice.toString());
-//     if (newPrice) {
-//       const price = parseFloat(newPrice);
-//       this.adminService.updateProductPrice(product.id, { productId: product.id, priceValue: price }).subscribe(() => {
-//         product.userPrice = price;
-//       });
-//     }
-//   }
-
-//   deleteProduct(productId: number): void {
-//     this.adminService.deleteProduct(productId).subscribe(() => {
-//       this.products = this.products.filter(product => product.id !== productId);
-//     });
-//   }
-// }
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../types';
 import { AdminService } from '../admin/admin.service';
@@ -60,6 +12,8 @@ export class AdminProductComponent implements OnInit {
   editingProduct: Product | null = null;
   editingProductPrice: Product | null = null;
   newProductPrice: number | null = null;
+  filteredProducts: Product[] = [];
+  searchQuery: string = '';
 
   constructor(private adminService: AdminService) {}
 
@@ -68,23 +22,34 @@ export class AdminProductComponent implements OnInit {
   }
 
   loadProducts(): void {
-    this.adminService.getAllProducts().subscribe(
-      (data: Product[]) => {
+    this.adminService.getAllProducts().subscribe({
+      next: (data: Product[]) => {
         this.products = data;
+        this.filteredProducts = data;
       },
-      (error: any) => {
-        console.error('Failed to load products', error);
+      error: (err) => {
+        console.error('Failed to load products', err);
       }
+    });
+  }
+
+  searchProducts(): void {
+    const query = this.searchQuery.toLowerCase();
+    this.filteredProducts = this.products.filter(
+      product =>
+        product.name.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query)
     );
   }
 
   editProduct(product: Product): void {
     this.editingProduct = { ...product };
+    this.editingProductPrice = null;
   }
 
   editProductPrice(product: Product): void {
     this.editingProductPrice = { ...product };
-    this.newProductPrice = null;
+    this.editingProduct = null;
   }
 
   saveProduct(): void {
@@ -97,6 +62,7 @@ export class AdminProductComponent implements OnInit {
           const index = this.products.findIndex(p => p.id === data.id);
           if (index !== -1) {
             this.products[index] = data;
+            this.filteredProducts[index] = data; // Update filteredProducts as well
           }
           this.editingProduct = null;
         },
@@ -138,6 +104,7 @@ export class AdminProductComponent implements OnInit {
     this.adminService.deleteProduct(productId).subscribe(
       () => {
         this.products = this.products.filter(product => product.id !== productId);
+        this.filteredProducts = this.filteredProducts.filter(product => product.id !== productId);
       },
       (error) => {
         console.error('Failed to delete product', error);

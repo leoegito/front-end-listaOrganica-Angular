@@ -1,16 +1,3 @@
-<!-- <div class="container mt-4">
-    <h2>Lista de Produtos</h2>
-    <div *ngFor="let product of products">
-      <p>
-        {{ product.name }} - {{ product.description }} - R$ {{ product.userPrice }} - Mediano: R$ {{ product.median }}
-        <button (click)="editProduct(product)" class="btn btn-warning btn-sm">Editar</button>
-        <button (click)="editProductPrice(product)" class="btn btn-info btn-sm">Editar Preço</button>
-        <button (click)="deleteProduct(product.id)" class="btn btn-danger btn-sm">Excluir</button>
-      </p>
-    </div>
-  </div>
-   -->
-
 
    <div class="container mt-4">
     <h1>Admin Console - Produtos</h1>
@@ -18,10 +5,15 @@
       <button type="button" class="btn btn-secondary mx-2" [routerLink]="['/admin']">Usuários</button>
       <button type="button" class="btn btn-primary mx-2">Produtos</button>
     </div>
-    
-    <div *ngIf="!editingProduct">
+  
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Pesquisar Produto" [(ngModel)]="searchQuery" (input)="searchProducts()">
+      <span class="input-group-text"><i class="fa fa-search"></i></span>
+    </div>
+  
+    <div *ngIf="!editingProduct && !editingProductPrice">
       <ul class="list-group">
-        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let product of products">
+        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let product of filteredProducts">
           <span>{{ product.name }} - {{ product.description }} - {{ product.userPrice | currency:'BRL' }}</span>
           <span>
             <button class="btn btn-sm btn-primary me-2" (click)="editProduct(product)">Editar</button>
@@ -60,4 +52,5 @@
       </form>
     </div>
   </div>
+  
   
